@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/images/profile/ENOH.jpg" alt="Enoh Uwem Akpan" class="logo-img">
+                <span class="logo-text">Enoh Uwem Akpan</span>
+            </div>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="/images/profile/ENOH.jpg" alt="Profile Picture" class="profile-img">
+                </div>
+                <div class="hero-text">
+                    <h1>Welcome to My Portfolio</h1>
+                    <p class="subtitle">Frontend Developer passionate about creating beautiful and functional web experiences</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card" data-skill="html">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup and modern HTML features</p>
+                    <div class="skill-level">
+                        <div class="progress-bar" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-skill="css">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS3</h3>
+                    <p>Flexbox, Grid, Animations, and Responsive Design</p>
+                    <div class="skill-level">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-skill="javascript">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>ES6+, DOM Manipulation, and Modern Frameworks</p>
+                    <div class="skill-level">
+                        <div class="progress-bar" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card" data-skill="react">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>Component-based architecture and state management</p>
+                    <div class="skill-level">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Details Overlay -->
+            <div class="skill-overlay">
+                <div class="skill-overlay-content">
+                    <button class="close-overlay"><i class="fas fa-times"></i></button>
+                    <div class="skill-details">
+                        <div class="skill-info">
+                            <h4>Proficiency Level: Advanced</h4>
+                            <ul>
+                                <li>Semantic HTML5 elements</li>
+                                <li>Accessibility best practices</li>
+                                <li>SEO optimization</li>
+                                <li>Form validation</li>
+                            </ul>
+                        </div>
+                        <div class="skill-projects">
+                            <h4>Related Projects</h4>
+                            <div class="mini-projects">
+                                <div class="mini-project">
+                                    <img src="https://via.placeholder.com/150" alt="Project 1">
+                                    <h5>E-commerce Website</h5>
+                                    <p>Built with semantic HTML5</p>
+                                </div>
+                                <div class="mini-project">
+                                    <img src="https://via.placeholder.com/150" alt="Project 2">
+                                    <h5>Portfolio Template</h5>
+                                    <p>Accessible and SEO-friendly</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>My Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/images/projects/e-commerce.png" alt="De Dash Dash E-commerce">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://enohakpan.github.io/wdd131/Final-Project/index.html" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
+                                <a href="https://github.com/enohakpan/wdd131/tree/main/Final-Project" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>De Dash Dash E-commerce</h3>
+                        <p>A modern e-commerce platform for custom fashion pieces, featuring a responsive design, shopping cart functionality, and product showcase.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/images/projects/rafting.png" alt="White Water Rafting">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://enohakpan.github.io/wdd130/wwr/about.html" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
+                                <a href="https://github.com/enohakpan/wdd130/tree/main/wwr" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>White Water Rafting</h3>
+                        <p>A dynamic website for a rafting company showcasing adventure trips, company history, and booking information with a focus on user experience and responsive design.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">Wireframing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dashdash59600@gmail.com&su=Portfolio Contact" class="contact-card" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <span>dashdash59600@gmail.com</span>
+                        <p class="contact-description">Feel free to reach out for job opportunities or collaborations</p>
+                    </a>
+                    <a href="https://github.com/enohakpan" class="contact-card" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <span>github.com/enohakpan</span>
+                        <p class="contact-description">Check out my open-source contributions and projects</p>
+                    </a>
+                    <a href="https://www.linkedin.com/in/enoh-uwem-akpan" class="contact-card" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <span>linkedin.com/in/enoh-uwem-akpan</span>
+                        <p class="contact-description">Connect with me for professional networking</p>
+                    </a>
+                    <a href="https://wa.me/+2349027554682" class="contact-card" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <span>+2349027554682</span>
+                        <p class="contact-description">Message me directly for quick responses</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/enohakpan" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/enoh-uwem-akpan" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/yourphonenumber" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Enoh Uwem Akpan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
