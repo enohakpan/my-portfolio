@@ -48,7 +48,7 @@ function updateSkillDetails(skillType) {
             break;
         case 'css':
             skillInfo.innerHTML = `
-                <h4>Proficiency Level: Advanced</h4>
+                <h4>Proficiency Level: Intermediate</h4>
                 <ul>
                     <li>CSS Grid and Flexbox</li>
                     <li>CSS Animations and Transitions</li>
@@ -59,7 +59,7 @@ function updateSkillDetails(skillType) {
             break;
         case 'javascript':
             skillInfo.innerHTML = `
-                <h4>Proficiency Level: Advanced</h4>
+                <h4>Proficiency Level: Intermediate</h4>
                 <ul>
                     <li>ES6+ Features</li>
                     <li>DOM Manipulation</li>
@@ -70,7 +70,7 @@ function updateSkillDetails(skillType) {
             break;
         case 'react':
             skillInfo.innerHTML = `
-                <h4>Proficiency Level: Advanced</h4>
+                <h4>Proficiency Level: Intermediate</h4>
                 <ul>
                     <li>React Hooks</li>
                     <li>State Management</li>
