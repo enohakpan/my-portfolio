@@ -35,6 +35,28 @@ function updateSkillDetails(skillType) {
 
     // Update content based on skill type
     switch(skillType) {
+        case 'typescript':
+            skillInfo.innerHTML = `
+                <h4>Proficiency Level: Advanced</h4>
+                <ul>
+                    <li>Type-safe React & Next.js development</li>
+                    <li>Interfaces, generics, and strict typing</li>
+                    <li>Production bug fixes and feature development</li>
+                    <li>API integration with typed responses</li>
+                </ul>
+            `;
+            break;
+        case 'nextjs':
+            skillInfo.innerHTML = `
+                <h4>Proficiency Level: Advanced</h4>
+                <ul>
+                    <li>App Router & Server Components</li>
+                    <li>SSR, SSG, and API routes</li>
+                    <li>Deployment on AWS & Render</li>
+                    <li>Performance optimization</li>
+                </ul>
+            `;
+            break;
         case 'html':
             skillInfo.innerHTML = `
                 <h4>Proficiency Level: Advanced</h4>
