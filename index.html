@@ -27,14 +27,26 @@
                     <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+                <span class="theme-toggle__track">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                    <span class="theme-toggle__thumb"></span>
+                </span>
+            </button>
         </div>
     </header>
 
     <main>
         <section id="home" class="hero">
+            <div class="hero-orb hero-orb--one"></div>
+            <div class="hero-orb hero-orb--two"></div>
+            <div class="hero-grid"></div>
             <div class="hero-content">
                 <div class="hero-image">
-                    <img src="/images/profile/Enoh.jpeg" alt="Profile Picture" class="profile-img">
+                    <div class="profile-frame">
+                        <img src="/images/profile/Enoh.jpeg" alt="Profile Picture" class="profile-img">
+                    </div>
                 </div>
                 <div class="hero-text">
                     <p class="hero-label">Full-Stack Developer</p>

@@ -31,7 +31,6 @@ function closeOverlay() {
 function updateSkillDetails(skillType) {
     const details = document.querySelector('.skill-details');
     const skillInfo = details.querySelector('.skill-info');
-    const skillProjects = details.querySelector('.skill-projects');
 
     // Update content based on skill type
     switch(skillType) {
@@ -104,10 +103,84 @@ function updateSkillDetails(skillType) {
     }
 }
 
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    document.body.classList.toggle('dark-mode', isDark);
+
+    if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+}
+
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const activeTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    applyTheme(activeTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+            localStorage.setItem('portfolio-theme', nextTheme);
+            applyTheme(nextTheme);
+        });
+    }
+}
+
+function initializeTiltCards() {
+    const cards = document.querySelectorAll('.skill-card, .project-card, .education-card, .contact-card, .timeline-content, .skill-category');
+
+    cards.forEach(card => {
+        card.classList.add('tilt-card');
+
+        card.addEventListener('mousemove', event => {
+            const rect = card.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const rotateY = ((x / rect.width) - 0.5) * 10;
+            const rotateX = ((0.5 - (y / rect.height)) * 10);
+
+            card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+}
+
+function initializeRevealAnimations() {
+    const animatedItems = document.querySelectorAll('.timeline-item, .skill-category, .skill-card, .project-card, .education-card, .contact-card');
+
+    if (!('IntersectionObserver' in window)) {
+        animatedItems.forEach(item => item.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    animatedItems.forEach(item => observer.observe(item));
+}
+
 // Hamburger menu functionality
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.menu-btn');
     const nav = document.querySelector('nav');
+    initializeTheme();
+    initializeTiltCards();
+    initializeRevealAnimations();
 
     menuBtn.addEventListener('click', () => {
         menuBtn.classList.toggle('open');
