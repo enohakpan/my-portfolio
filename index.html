@@ -268,6 +268,31 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-live-preview" aria-hidden="true">
+                            <iframe src="https://lovito.onrender.com/" title="Lovito Creations live preview" loading="lazy" tabindex="-1"></iframe>
+                        </div>
+                        <img src="/images/projects/lovito.png" alt="Lovito Creations — Soaps & home care" class="project-fallback">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://lovito.onrender.com/" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-badge">Professional Project</span>
+                        <h3>Lovito Creations</h3>
+                        <p>An e-commerce marketplace for botanical soaps and home care — featuring product collections, NGN pricing, cart checkout, and a marketplace-style shopping experience built for local customers.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-live-preview" aria-hidden="true">
                             <iframe src="https://enohakpan.github.io/wdd131/Final-Project/index.html" title="De Dash Dash E-commerce live preview" loading="lazy" tabindex="-1"></iframe>
                         </div>
                         <img src="/images/projects/e-commerce.png" alt="De Dash Dash E-commerce" class="project-fallback">
@@ -348,7 +373,9 @@
                         <h3>Web and Computer Programming</h3>
                         <p class="education-institution">Certification</p>
                         <p>Foundational programming and web development skills.</p>
-                        <a href="https://drive.google.com/file/d/1vXjbrmIMCf3toQB714yf-n5RW5L9BWdO/view?usp=sharing" class="education-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                        <button type="button" class="education-link cert-viewer-trigger" data-cert="/images/main_cert.pdf" data-title="Web and Computer Programming">
+                            <i class="fas fa-award"></i> View Certificate
+                        </button>
                     </div>
                 </article>
             </div>
@@ -397,6 +424,45 @@
             <p>&copy; 2026 Enoh Uwem Akpan. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="cert-viewer" id="cert-viewer" aria-hidden="true">
+        <div class="cert-viewer__backdrop" data-cert-close></div>
+        <div class="cert-viewer__stage" role="dialog" aria-modal="true" aria-labelledby="cert-viewer-title">
+            <div class="cert-viewer__orb cert-viewer__orb--one"></div>
+            <div class="cert-viewer__orb cert-viewer__orb--two"></div>
+
+            <header class="cert-viewer__header">
+                <div class="cert-viewer__badge">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <p class="cert-viewer__eyebrow">Verified Credential</p>
+                        <h3 id="cert-viewer-title">Web and Computer Programming</h3>
+                    </div>
+                </div>
+                <div class="cert-viewer__toolbar">
+                    <button type="button" class="cert-viewer__tool" id="cert-zoom-out" aria-label="Zoom out"><i class="fas fa-search-minus"></i></button>
+                    <span class="cert-viewer__zoom-label" id="cert-zoom-label">100%</span>
+                    <button type="button" class="cert-viewer__tool" id="cert-zoom-in" aria-label="Zoom in"><i class="fas fa-search-plus"></i></button>
+                    <a class="cert-viewer__tool cert-viewer__download" id="cert-download" href="/images/main_cert.pdf" download="Enoh-Uwem-Akpan-Web-and-Computer-Programming.pdf" aria-label="Download certificate">
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <button type="button" class="cert-viewer__tool cert-viewer__close" data-cert-close aria-label="Close certificate viewer"><i class="fas fa-times"></i></button>
+                </div>
+            </header>
+
+            <div class="cert-viewer__frame-wrap">
+                <div class="cert-viewer__frame" id="cert-frame">
+                    <div class="cert-viewer__border"></div>
+                    <div class="cert-viewer__shine"></div>
+                    <div class="cert-viewer__viewport">
+                        <iframe id="cert-iframe" class="cert-viewer__doc" title="Certificate PDF" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <p class="cert-viewer__hint">Drag to pan when zoomed · Esc to close</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

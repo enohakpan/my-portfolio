@@ -133,6 +133,9 @@ function initializeTheme() {
 }
 
 function initializeTiltCards() {
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
     const cards = document.querySelectorAll('.skill-card, .project-card, .education-card, .contact-card, .timeline-content, .skill-category');
 
     cards.forEach(card => {
@@ -174,6 +177,123 @@ function initializeRevealAnimations() {
     animatedItems.forEach(item => observer.observe(item));
 }
 
+function initializeCertificateViewer() {
+    const viewer = document.getElementById('cert-viewer');
+    if (!viewer) return;
+
+    const iframe = document.getElementById('cert-iframe');
+    const frame = document.getElementById('cert-frame');
+    const viewport = viewer.querySelector('.cert-viewer__viewport');
+    const titleEl = document.getElementById('cert-viewer-title');
+    const downloadLink = document.getElementById('cert-download');
+    const zoomLabel = document.getElementById('cert-zoom-label');
+    const zoomInBtn = document.getElementById('cert-zoom-in');
+    const zoomOutBtn = document.getElementById('cert-zoom-out');
+    const triggers = document.querySelectorAll('.cert-viewer-trigger');
+
+    let zoom = 1;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let scrollLeft = 0;
+    let scrollTop = 0;
+
+    function setZoom(nextZoom) {
+        zoom = Math.min(2, Math.max(0.75, nextZoom));
+        iframe.style.transform = `scale(${zoom})`;
+        iframe.style.width = `${100 / zoom}%`;
+        iframe.style.height = `${100 / zoom}%`;
+        zoomLabel.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    function openViewer(certPath, title) {
+        titleEl.textContent = title || 'Certificate';
+        downloadLink.href = certPath;
+        iframe.src = `${certPath}#toolbar=0&navpanes=0&scrollbar=0`;
+        setZoom(1);
+        viewer.classList.add('active');
+        viewer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+        viewer.classList.remove('active');
+        viewer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        iframe.src = '';
+        setZoom(1);
+    }
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            openViewer(trigger.dataset.cert, trigger.dataset.title);
+        });
+    });
+
+    viewer.querySelectorAll('[data-cert-close]').forEach(el => {
+        el.addEventListener('click', closeViewer);
+    });
+
+    zoomInBtn.addEventListener('click', () => setZoom(zoom + 0.15));
+    zoomOutBtn.addEventListener('click', () => setZoom(zoom - 0.15));
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && viewer.classList.contains('active')) {
+            closeViewer();
+        }
+    });
+
+    viewport.addEventListener('mousedown', event => {
+        isDragging = true;
+        viewport.classList.add('is-dragging');
+        startX = event.pageX - viewport.offsetLeft;
+        startY = event.pageY - viewport.offsetTop;
+        scrollLeft = viewport.scrollLeft;
+        scrollTop = viewport.scrollTop;
+    });
+
+    viewport.addEventListener('mouseleave', () => {
+        isDragging = false;
+        viewport.classList.remove('is-dragging');
+    });
+
+    viewport.addEventListener('mouseup', () => {
+        isDragging = false;
+        viewport.classList.remove('is-dragging');
+    });
+
+    viewport.addEventListener('mousemove', event => {
+        if (!isDragging) return;
+        event.preventDefault();
+        const x = event.pageX - viewport.offsetLeft;
+        const y = event.pageY - viewport.offsetTop;
+        viewport.scrollLeft = scrollLeft - (x - startX);
+        viewport.scrollTop = scrollTop - (y - startY);
+    });
+
+    // Soft 3D tilt on the framed certificate (desktop only)
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (canHover) {
+        frame.addEventListener('mousemove', event => {
+            if (!viewer.classList.contains('active')) return;
+            const rect = frame.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width;
+            const y = (event.clientY - rect.top) / rect.height;
+            const rotateY = (x - 0.5) * 8;
+            const rotateX = (0.5 - y) * 6;
+            frame.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            frame.style.animation = 'none';
+        });
+
+        frame.addEventListener('mouseleave', () => {
+            frame.style.transform = '';
+            frame.style.animation = '';
+        });
+    }
+}
+
 // Hamburger menu functionality
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.menu-btn');
@@ -181,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
     initializeTiltCards();
     initializeRevealAnimations();
+    initializeCertificateViewer();
 
     menuBtn.addEventListener('click', () => {
         menuBtn.classList.toggle('open');
