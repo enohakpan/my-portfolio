@@ -2,6 +2,14 @@ const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function whaleTier() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    if (width <= 700 || (width <= 940 && height <= 500)) return 'phone';
+    if (width < 1400) return 'tablet';
+    return 'desk';
+}
+
 function makeRenderer(THREE, canvas) {
     const renderer = new THREE.WebGLRenderer({
         canvas,
@@ -11,7 +19,7 @@ function makeRenderer(THREE, canvas) {
     });
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 860 ? 1 : 1.15));
+    renderer.setPixelRatio(1);
     return renderer;
 }
 
@@ -51,7 +59,7 @@ void main() {
     float flow = 0.62 + 0.38 * sin(uTime * 1.7 - p.x * 1.25 + p.y);
     vBright = aBright * flow;
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
-    gl_PointSize = (2.05 + aBright * 3.1) * uPixel * (8.2 / max(1.0, -mv.z));
+    gl_PointSize = (2.45 + aBright * 3.6) * uPixel * (8.2 / max(1.0, -mv.z));
     gl_Position = projectionMatrix * mv;
 }
 `;
@@ -84,7 +92,7 @@ void main() {
     float core = 1.0 - smoothstep(0.0, uSpread + 0.02, abs(position.y));
     vBright = core;
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
-    gl_PointSize = (1.3 + core * 3.4) * uPixel * (7.2 / max(1.0, -mv.z));
+    gl_PointSize = (1.7 + core * 4.1) * uPixel * (7.2 / max(1.0, -mv.z));
     gl_Position = projectionMatrix * mv;
 }
 `;
@@ -259,13 +267,14 @@ function buildRibbon(count, spread) {
 }
 
 function initWhale(THREE, canvas) {
-    const narrow = window.innerWidth < 860;
+    const tier = whaleTier();
+    const narrow = tier !== 'desk';
     const renderer = makeRenderer(THREE, canvas);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 50);
     camera.position.set(0.2, 0.4, narrow ? 8.8 : 7.8);
 
-    const whale = buildWhale(narrow ? 1600 : 3800);
+    const whale = buildWhale(narrow ? 1100 : 2200);
     const whaleGeo = new THREE.BufferGeometry();
     whaleGeo.setAttribute('position', new THREE.BufferAttribute(whale.positions, 3));
     whaleGeo.setAttribute('aBright', new THREE.BufferAttribute(whale.brightness, 1));
@@ -278,13 +287,36 @@ function initWhale(THREE, canvas) {
     whaleGroup.add(whalePoints);
     scene.add(whaleGroup);
 
+    const ipadAnchor = { x: 2.45, y: 1.75 };
+    const rayPoint = new THREE.Vector3();
+
     function placeWhale() {
-        const small = window.innerWidth < 860;
-        whaleGroup.scale.setScalar(small ? 0.62 : 1.12);
-        camera.position.set(0, small ? 0.05 : 0.35, small ? 6.6 : 8.4);
-        camera.lookAt(small ? 0.15 : 2.05, small ? -0.05 : -0.12, 0);
+        const tablet = whaleTier() === 'tablet';
+        const portrait = tablet && window.innerWidth < window.innerHeight;
+        whaleGroup.scale.setScalar(portrait ? 0.5 : tablet ? 0.8 : 1.12);
+        camera.position.set(0, portrait ? 0.16 : tablet ? 0.26 : 0.35, portrait ? 10.4 : tablet ? 9.1 : 8.4);
+        camera.lookAt(portrait ? 0.72 : tablet ? 1.65 : 2.05, tablet ? -0.1 : -0.12, 0);
+        ipadAnchor.x = portrait ? 2.45 : 3.45;
     }
     placeWhale();
+
+    function updateIpadAnchor() {
+        if (whaleTier() !== 'tablet') return;
+        const title = document.querySelector('.home-title');
+        if (!title) return;
+        const canvasRect = canvas.getBoundingClientRect();
+        const titleRect = title.getBoundingClientRect();
+        if (!canvasRect.height || !titleRect.height) return;
+        const screenY = titleRect.top + titleRect.height * 0.5 - canvasRect.top;
+        const ndcY = -((screenY / canvasRect.height) * 2 - 1);
+        const ndcX = window.innerWidth < window.innerHeight ? 0.42 : 0.28;
+        camera.updateMatrixWorld(true);
+        rayPoint.set(ndcX, ndcY, 0.5).unproject(camera);
+        rayPoint.sub(camera.position);
+        if (Math.abs(rayPoint.z) < 1e-4) return;
+        const worldY = camera.position.y + rayPoint.y * (-camera.position.z / rayPoint.z);
+        if (Number.isFinite(worldY)) ipadAnchor.y = worldY;
+    }
 
     function addRibbon(count, spread, near, far) {
         const data = buildRibbon(count, spread);
@@ -301,10 +333,10 @@ function initWhale(THREE, canvas) {
         scene.add(new THREE.Points(geo, pointMaterial(THREE, RIBBON_VERT, RIBBON_FRAG, uniforms)));
     }
 
-    addRibbon(narrow ? 600 : 1400, 0.42, '#bff4ff', '#1a4fe0');
+    addRibbon(narrow ? 360 : 750, 0.42, '#bff4ff', '#1a4fe0');
 
     const band = new THREE.Mesh(
-        new THREE.PlaneGeometry(16.5, 0.9, 48, 1),
+        new THREE.PlaneGeometry(16.5, 0.9, 16, 1),
         new THREE.ShaderMaterial({
             uniforms: { uTime: whaleUniforms.uTime },
             vertexShader: BAND_VERT,
@@ -346,7 +378,7 @@ function initWhale(THREE, canvas) {
     function frame(now) {
         raf = 0;
         if (!active) return;
-        if (!reducedMotion && now - lastRender < 16) {
+        if (!reducedMotion && now - lastRender < 33) {
             raf = requestAnimationFrame(frame);
             return;
         }
@@ -357,14 +389,14 @@ function initWhale(THREE, canvas) {
         pointer.x += (pointerTarget.x - pointer.x) * follow;
         pointer.y += (pointerTarget.y - pointer.y) * follow;
 
-        const small = window.innerWidth < 860;
-        const restX = small ? 0.2 : 4.7;
-        const restY = small ? -0.05 : -0.28;
-        whaleGroup.position.x = restX + pointer.x * (small ? 0 : 0.16);
-        whaleGroup.position.y = restY - pointer.y * (small ? 0 : 0.2) + Math.sin(whaleUniforms.uTime.value * 0.7) * 0.045;
-        whaleGroup.rotation.x = (small ? 0.12 : 0.2) - pointer.y * (small ? 0 : 0.22);
-        whaleGroup.rotation.y = (small ? 0.04 : -0.08) + pointer.x * (small ? 0 : 0.42);
-        whaleGroup.rotation.z = (small ? -0.02 : -0.04) + pointer.x * (small ? 0 : 0.08);
+        const tablet = whaleTier() === 'tablet';
+        const restX = tablet ? ipadAnchor.x : 4.7;
+        const restY = tablet ? ipadAnchor.y : -0.28;
+        whaleGroup.position.x = restX + pointer.x * 0.16;
+        whaleGroup.position.y = restY - pointer.y * 0.2 + Math.sin(whaleUniforms.uTime.value * 0.7) * 0.045;
+        whaleGroup.rotation.x = (tablet ? 0.18 : 0.2) - pointer.y * 0.22;
+        whaleGroup.rotation.y = (tablet ? -0.06 : -0.08) + pointer.x * 0.42;
+        whaleGroup.rotation.z = (tablet ? -0.03 : -0.04) + pointer.x * 0.08;
         renderer.render(scene, camera);
         if (!reducedMotion) raf = requestAnimationFrame(frame);
     }
@@ -390,6 +422,7 @@ function initWhale(THREE, canvas) {
         whaleUniforms.uPixel.value = renderer.getPixelRatio();
         placeWhale();
         resizeRenderer(renderer, camera, canvas);
+        updateIpadAnchor();
     }
 
     window.addEventListener('resize', fit);
@@ -399,6 +432,8 @@ function initWhale(THREE, canvas) {
     }
 
     resizeRenderer(renderer, camera, canvas);
+    updateIpadAnchor();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     document.body.classList.add('webgl-on');
     start();
 }
@@ -447,7 +482,7 @@ function initCraft(THREE, canvas) {
     scene.add(group);
 
     function addTube(scale, radius, opacity) {
-        const geo = new THREE.TubeGeometry(new SquircleCurve(scale), 72, radius, 8, true);
+        const geo = new THREE.TubeGeometry(new SquircleCurve(scale), 40, radius, 5, true);
         const mat = new THREE.ShaderMaterial({
             uniforms: { uTime: time },
             vertexShader: TUBE_VERT,
@@ -478,7 +513,7 @@ function initCraft(THREE, canvas) {
     sprite.scale.set(3.6, 3.6, 1);
     group.add(sprite);
 
-    const dustCount = window.innerWidth < 860 ? 180 : 360;
+    const dustCount = whaleTier() === 'desk' ? 160 : 90;
     const dustPositions = new Float32Array(dustCount * 3);
     const dustBright = new Float32Array(dustCount);
     const curve = new SquircleCurve(1.22);
@@ -569,9 +604,9 @@ async function boot() {
 
     try {
         const THREE = await import(THREE_URL);
-        const phone = window.matchMedia('(max-width: 860px)');
+        const phone = window.matchMedia('(max-width: 700px), (max-width: 940px) and (max-height: 500px)');
         const startWhale = () => {
-            if (!whaleCanvas || phone.matches || whaleCanvas.dataset.ready) return;
+            if (!whaleCanvas || whaleTier() === 'phone' || whaleCanvas.dataset.ready) return;
             whaleCanvas.dataset.ready = '1';
             initWhale(THREE, whaleCanvas);
         };

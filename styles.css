@@ -118,11 +118,15 @@ h2 {
     padding: 108px 132px 80px 56px;
 }
 
+.panel:not(.panel-home) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 100dvh;
+}
+
 .glass {
     background: linear-gradient(180deg, rgba(10, 24, 44, 0.78), rgba(4, 12, 24, 0.72));
     border: 1px solid var(--line);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28), inset 0 0 30px rgba(40, 140, 255, 0.05);
-    backdrop-filter: blur(16px);
 }
 
 .brackets {
@@ -384,6 +388,9 @@ h2 {
     width: 100%;
     height: 100%;
 }
+
+#whale-canvas,
+#craft-canvas { contain: paint; }
 
 #whale-canvas { z-index: 1; display: block; }
 
@@ -695,8 +702,7 @@ blockquote {
     display: grid;
     place-items: center;
     padding: 1.25rem;
-    background: rgba(2, 6, 14, 0.72);
-    backdrop-filter: blur(10px);
+    background: rgba(2, 6, 14, 0.86);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
@@ -1029,8 +1035,7 @@ blockquote {
 .cert-viewer__backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(2, 6, 14, 0.78);
-    backdrop-filter: blur(12px);
+    background: rgba(2, 6, 14, 0.88);
 }
 
 .cert-viewer__stage {
@@ -1149,7 +1154,7 @@ blockquote {
     .channel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 700px), (max-width: 940px) and (max-height: 500px) {
     html { scroll-snap-type: none; }
     main { padding-left: 0; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
     .orbit { display: none; }
@@ -1175,6 +1180,7 @@ blockquote {
         flex-direction: column;
         min-height: auto;
         overflow: hidden;
+        padding-bottom: 56px;
     }
     #whale-canvas,
     .home-fallback,
@@ -1184,8 +1190,9 @@ blockquote {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 18px;
     }
+    .panel-home .kicker { margin-bottom: 1.25rem; }
     .home-portrait {
         display: grid;
         place-items: center;
@@ -1245,13 +1252,43 @@ blockquote {
     .home-title span {
         font-size: clamp(2.2rem, 11vw, 3.6rem);
         letter-spacing: 0.04em;
+        line-height: 0.98;
     }
-    .lede { font-size: 1.05rem; margin-top: 0.9rem; max-width: none; }
-    .stack-line { font-size: 0.78rem; letter-spacing: 0.08em; overflow-wrap: anywhere; }
-    .status { font-size: 10px; letter-spacing: 0.04em; align-items: flex-start; }
-    .hero-metrics { gap: 0.85rem 1rem; margin-top: 1rem; }
-    .hero-metrics b { font-size: 1.2rem; }
-    .hero-metrics span { font-size: 0.68rem; letter-spacing: 0.04em; }
+    .lede {
+        font-size: 1.08rem;
+        line-height: 1.55;
+        margin-top: 1.5rem;
+        max-width: none;
+    }
+    .stack-line {
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        margin-top: 1.55rem;
+        padding-top: 1.15rem;
+        overflow-wrap: anywhere;
+    }
+    .status {
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        line-height: 1.5;
+        margin-top: 1.25rem;
+        align-items: flex-start;
+    }
+    .status-dot { margin-top: 0.35em; flex: none; }
+    .hero-metrics {
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+        margin-top: 1.7rem;
+    }
+    .hero-metrics li {
+        display: grid;
+        grid-template-columns: 4.6rem minmax(0, 1fr);
+        column-gap: 0.75rem;
+        align-items: baseline;
+    }
+    .hero-metrics b { font-size: 1.45rem; }
+    .hero-metrics span { font-size: 0.78rem; letter-spacing: 0.08em; line-height: 1.35; }
     .scroll-cue {
         order: 3;
         position: relative;
@@ -1260,8 +1297,8 @@ blockquote {
         transform: none;
         display: block;
         width: max-content;
-        margin: 4px auto 18px;
-        letter-spacing: 0.16em;
+        margin: 2.1rem auto 0.4rem;
+        letter-spacing: 0.18em;
     }
     .log-head { flex-direction: column; }
     .viewer { width: 100%; }
@@ -1317,11 +1354,6 @@ blockquote {
     .home-title span { font-size: clamp(2rem, 10vw, 2.9rem); }
     .home-portrait { width: 124px; height: 124px; }
     .home-portrait img { width: 98px; height: 98px; }
-    .hero-metrics {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.45rem;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
