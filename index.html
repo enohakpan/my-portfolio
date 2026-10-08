@@ -3,467 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020610">
+    <meta name="description" content="Enoh Uwem Akpan — full-stack developer building production web products with TypeScript, React, and Next.js.">
     <title>Enoh Uwem Akpan — Full-Stack Developer</title>
+    <link rel="icon" href="images/profile/avatar.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&family=Rajdhani:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="/images/profile/Enoh.jpeg" alt="Enoh Uwem Akpan" class="logo-img">
-                    <span class="logo-text">Enoh Uwem Akpan</span>
-            </div>
-            <div class="menu-btn">
-                <div class="menu-btn__burger"></div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-                    <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
-                    <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
-                    <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-            </nav>
-            <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-                <span class="theme-toggle__track">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                    <span class="theme-toggle__thumb"></span>
-                </span>
-            </button>
-        </div>
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-work" viewBox="0 0 24 24"><path d="M3 8h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 6l-2 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-nodes" viewBox="0 0 24 24"><path d="M7 7h4v4H7zM13 13h4v4h-4zM11 9v2M13 11h0M9 15h4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-study" viewBox="0 0 24 24"><path d="M3 9 12 5l9 4-9 4zM7 12v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 4 8 4-8 4-8-4zM4 12l8 4 8-4M4 16l8 4 8-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-react" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.7" fill="currentColor"/><ellipse cx="12" cy="12" rx="9" ry="3.3" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="12" cy="12" rx="9" ry="3.3" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.3" fill="none" stroke="currentColor" stroke-width="1.4" transform="rotate(120 12 12)"/></symbol>
+        <symbol id="i-js" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 16c.4.8 1.1 1.2 2.1 1.2 1.3 0 2.1-.6 2.1-1.6 0-2.4-4.2-1.2-4.2-3.6 0-1 .8-1.7 2-1.7.9 0 1.6.3 2 .9M16 11.5c.4 1.2 1.2 2 2.4 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+        <symbol id="i-html" viewBox="0 0 24 24"><path d="m5 3 1.2 16.2L12 21l5.8-1.8L19 3zM8 8h8M8.4 12h7.2M9 16h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-css" viewBox="0 0 24 24"><path d="m5 3 1.2 16.2L12 21l5.8-1.8L19 3zM8 8h8l-.6 6.2L12 16l-3.2-1.2L8.5 12H11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+        <symbol id="i-left" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-right" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-cert" viewBox="0 0 24 24"><path d="M7 3h10v13l-5-2.2L7 16z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m9 14-1 6 4-2 4 2-1-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m15 15 5 5M7 10h6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m15 15 5 5M10 7v6M7 10h6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+        <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.9 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.7 3.3a2.2 2.2 0 1 0 .1 4.4 2.2 2.2 0 0 0-.1-4.4zM3 9h3.4v12H3zM9.6 9H13v1.6h.1c.5-1 1.7-2 3.5-2 3.7 0 4.4 2.4 4.4 5.6V21H17.6v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9.6z"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></symbol>
+    </svg>
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <aside class="rail">
+        <a class="rail-brand" href="#home">
+            <img src="images/profile/avatar.jpg" alt="" class="rail-avatar" width="64" height="64" decoding="async">
+            <span class="rail-name">ENOH AKPAN</span>
+        </a>
+        <nav class="rail-nav" aria-label="Primary">
+            <a href="#home" data-section="home" aria-label="Main" aria-current="page">
+                <svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg>
+                <span>Main</span>
+            </a>
+            <a href="#experience" data-section="experience" aria-label="Work">
+                <svg class="icon" aria-hidden="true"><use href="#i-work"></use></svg>
+                <span>Work</span>
+            </a>
+            <a href="#skills" data-section="skills" aria-label="Craft">
+                <svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg>
+                <span>Craft</span>
+            </a>
+            <a href="#projects" data-section="projects" aria-label="Portfolio">
+                <svg class="icon" aria-hidden="true"><use href="#i-nodes"></use></svg>
+                <span>Portfolio</span>
+            </a>
+            <a href="#education" data-section="education" aria-label="Study">
+                <svg class="icon" aria-hidden="true"><use href="#i-study"></use></svg>
+                <span>Study</span>
+            </a>
+            <a href="#contact" data-section="contact" aria-label="Contact">
+                <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                <span>Contact</span>
+            </a>
+        </nav>
+        <div class="rail-locale">EN</div>
+    </aside>
+
+    <header class="topbar">
+        <div class="topbar-brand">ENOH AKPAN</div>
+        <div class="topbar-page">PAGE <span>//</span> <strong id="page-label">MAIN</strong></div>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">
+            <span class="sound-mark" aria-hidden="true"></span>
+            SOUND <span>//</span> <strong id="sound-label">OFF</strong>
+            <canvas id="sound-wave" width="120" height="32" aria-hidden="true"></canvas>
+        </button>
+        <time class="topbar-clock" id="clock">00:00:00</time>
     </header>
 
+    <nav class="orbit" aria-label="Sections">
+        <span class="orbit-line" aria-hidden="true"></span>
+        <a href="#home" data-section="home" class="is-active">
+            <span class="orbit-id">01</span>
+            <span class="orbit-name">MAIN</span>
+            <span class="orbit-dot"></span>
+        </a>
+        <a href="#experience" data-section="experience">
+            <span class="orbit-id">02</span>
+            <span class="orbit-name">WORK</span>
+            <span class="orbit-dot"></span>
+        </a>
+        <a href="#skills" data-section="skills">
+            <span class="orbit-id">03</span>
+            <span class="orbit-name">CRAFT</span>
+            <span class="orbit-dot"></span>
+        </a>
+        <a href="#projects" data-section="projects">
+            <span class="orbit-id">04</span>
+            <span class="orbit-name">PORTFOLIO</span>
+            <span class="orbit-dot"></span>
+        </a>
+        <a href="#education" data-section="education">
+            <span class="orbit-id">05</span>
+            <span class="orbit-name">STUDY</span>
+            <span class="orbit-dot"></span>
+        </a>
+        <a href="#contact" data-section="contact">
+            <span class="orbit-id">06</span>
+            <span class="orbit-name">CONTACT</span>
+            <span class="orbit-dot"></span>
+        </a>
+    </nav>
+
     <main>
-        <section id="home" class="hero">
-            <div class="hero-orb hero-orb--one"></div>
-            <div class="hero-orb hero-orb--two"></div>
-            <div class="hero-grid"></div>
-            <div class="hero-content">
-                <div class="hero-image">
-                    <div class="profile-frame">
-                        <img src="/images/profile/Enoh.jpeg" alt="Profile Picture" class="profile-img">
-                    </div>
-                </div>
-                <div class="hero-text">
-                    <p class="hero-label">Full-Stack Developer</p>
-                    <h1>Enoh Uwem Akpan</h1>
-                    <p class="subtitle">Software Developer with hands-on experience building and maintaining modern web applications using TypeScript, JavaScript, React, and Next.js. Skilled in responsive UI development, production debugging, performance optimization, and Agile collaboration — with knowledge in AWS, DevOps, and software testing.</p>
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#experience" class="btn btn-secondary">My Experience</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                    </div>
-                </div>
+        <section id="home" class="panel-home" data-label="MAIN">
+            <div class="home-fallback" aria-hidden="true">
+                <div class="ribbon-fallback"></div>
+                <div class="whale-fallback"></div>
             </div>
+            <canvas id="whale-canvas" aria-hidden="true"></canvas>
+            <div class="home-vignette" aria-hidden="true"></div>
+            <div class="home-copy">
+                <p class="kicker">01 // FULL-STACK DEVELOPER</p>
+                <div class="home-heading">
+                    <h1 class="home-title">
+                        <span>ENOH</span>
+                        <span>AKPAN</span>
+                    </h1>
+                    <div class="home-portrait">
+                        <span class="portrait-spin" aria-hidden="true"></span>
+                        <span class="portrait-orbit" aria-hidden="true"><span></span></span>
+                        <img src="images/profile/avatar.jpg" alt="Enoh Uwem Akpan" width="192" height="203" decoding="async">
+                    </div>
+                </div>
+                <p class="lede">I create websites and digital products.<br>Expanding the boundaries of what's possible.</p>
+                <p class="stack-line">TYPESCRIPT / REACT / NEXT.JS / AWS</p>
+                <p class="status"><span class="status-dot" aria-hidden="true"></span> STATUS // INNOVATOR · EASSIST DENTAL SOLUTIONS</p>
+                <ul class="hero-metrics">
+                    <li><b>03</b><span>Production products live</span></li>
+                    <li><b>TS</b><span>Typed React &amp; Next.js</span></li>
+                    <li><b>20%</b><span>Performance lift shipped</span></li>
+                </ul>
+            </div>
+            <a class="scroll-cue" href="#experience">— SCROLL TO EXPLORE —</a>
         </section>
 
-        <section id="experience" class="experience-section">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <article class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Innovator</h3>
-                            <span class="timeline-date">Feb 2026 – Present</span>
-                        </div>
-                        <p class="timeline-company">eAssist Dental Solution</p>
+        <section id="experience" class="panel panel-work" data-label="WORK">
+            <div class="panel-intro">
+                <p class="kicker">02 / FIELD RECORD</p>
+                <h2>EXPERIENCE</h2>
+                <p class="intro">Production work across product features, interface performance, and reliable delivery. The record below is what I have already shipped with teams.</p>
+            </div>
+            <ol class="log">
+                <li class="log-item reveal">
+                    <span class="log-node" aria-hidden="true"></span>
+                    <article class="glass">
+                        <header class="log-head">
+                            <div>
+                                <p class="log-index">02.1 // CURRENT</p>
+                                <h3>Innovator</h3>
+                                <p class="log-company">eAssist Dental Solution</p>
+                            </div>
+                            <time>Feb 2026 – Present</time>
+                        </header>
                         <ul>
                             <li>Built and improved application features and bug fixes using TypeScript and Next.js, consistently meeting sprint deadlines.</li>
                             <li>Supported deployments and reliability using AWS and DevOps best practices.</li>
                             <li>Recognized as a top performer for first-pass ticket accuracy and fast turnaround.</li>
                         </ul>
-                    </div>
-                </article>
-
-                <article class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Contract Junior Full-Stack Developer</h3>
-                            <span class="timeline-date">Jan 2025 – Feb 2026</span>
-                        </div>
-                        <p class="timeline-company">ICreationsHub</p>
+                    </article>
+                </li>
+                <li class="log-item reveal">
+                    <span class="log-node" aria-hidden="true"></span>
+                    <article class="glass">
+                        <header class="log-head">
+                            <div>
+                                <p class="log-index">02.2</p>
+                                <h3>Contract Junior Full-Stack Developer</h3>
+                                <p class="log-company">ICreationsHub</p>
+                            </div>
+                            <time>Jan 2025 – Feb 2026</time>
+                        </header>
                         <ul>
                             <li>Developed responsive web applications using HTML, CSS, JavaScript, and React.</li>
                             <li>Improved DiamondEHR usability and boosted performance speed by 20% through team collaboration.</li>
                         </ul>
-                    </div>
-                </article>
-
-                <article class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Data Entry Specialist</h3>
-                            <span class="timeline-date">Jun 2025 – Dec 2025</span>
-                        </div>
-                        <p class="timeline-company">SpringBoard</p>
+                    </article>
+                </li>
+                <li class="log-item reveal">
+                    <span class="log-node" aria-hidden="true"></span>
+                    <article class="glass">
+                        <header class="log-head">
+                            <div>
+                                <p class="log-index">02.3</p>
+                                <h3>Data Entry Specialist</h3>
+                                <p class="log-company">SpringBoard</p>
+                            </div>
+                            <time>Jun 2025 – Dec 2025</time>
+                        </header>
                         <ul>
                             <li>Digitized and validated historical records with 100% accuracy, improving data efficiency by 20%.</li>
                             <li>Administrated team operations, helping maintain 95%+ accuracy across large-scale projects.</li>
                         </ul>
-                    </div>
-                </article>
-            </div>
+                    </article>
+                </li>
+            </ol>
         </section>
 
-        <section id="skills" class="skills-section">
-            <h2>Skills</h2>
-            <div class="skills-categories">
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Languages & Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
+        <section id="skills" class="panel panel-skills" data-label="CRAFT">
+            <div class="craft">
+                <div class="craft-copy">
+                    <p class="kicker">03 / CRAFT</p>
+                    <h2>BUILT TO<br>BE USED</h2>
+                    <p>I build websites, web applications, and interactive products with TypeScript, React, and Next.js. The first impression, the next action, and the everyday path through the interface all have to be obvious.</p>
+                    <p>I refine the details — layout, feedback, speed, and the edge cases that show up after launch — until the product feels made for the person using it.</p>
+                    <blockquote>“Just working isn't enough. People should enjoy using it.”</blockquote>
+                    <div class="chip-row" aria-label="Core stack">
+                        <span>TypeScript</span>
+                        <span>JavaScript</span>
+                        <span>C#</span>
+                        <span>React</span>
+                        <span>Next.js</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Git &amp; GitHub</span>
+                        <span>AWS</span>
+                        <span>DevOps</span>
+                        <span>Testing</span>
+                        <span>Agile</span>
+                        <span>Debugging</span>
+                        <span>Python</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git & GitHub</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">DevOps</span>
-                        <span class="skill-tag">Debugging</span>
-                        <span class="skill-tag">Software Testing</span>
-                        <span class="skill-tag">Agile</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-star"></i> Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Time Management</span>
-                        <span class="skill-tag">Organization</span>
-                        <span class="skill-tag">Attention to Detail</span>
-                        <span class="skill-tag">Cross-functional Collaboration</span>
-                    </div>
+                <div class="craft-stage">
+                    <canvas id="craft-canvas" aria-hidden="true"></canvas>
                 </div>
             </div>
 
-            <h3 class="skills-detail-heading">Technical Proficiency</h3>
-            <div class="skills-container">
-                <div class="skill-card" data-skill="typescript">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+            <h3 class="subhead">Technical proficiency</h3>
+            <div class="skill-grid">
+                <article class="skill-card reveal" tabindex="0" data-skill="typescript">
+                    <svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg>
                     <h3>TypeScript</h3>
-                    <p>Type-safe application development</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 80%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-skill="nextjs">
-                    <div class="skill-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
+                    <p>Type-safe React and Next.js work: features, fixes, and typed API responses in production.</p>
+                </article>
+                <article class="skill-card reveal" tabindex="0" data-skill="nextjs">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers"></use></svg>
                     <h3>Next.js</h3>
-                    <p>Full-stack React framework & SSR</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 75%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-skill="html">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <h3>HTML5</h3>
-                    <p>Semantic markup and modern HTML features</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 90%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-skill="css">
-                    <div class="skill-icon">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3>CSS3</h3>
-                    <p>Flexbox, Grid, Animations, and Responsive Design</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 65%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-skill="javascript">
-                    <div class="skill-icon">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3>JavaScript</h3>
-                    <p>ES6+, DOM Manipulation, and Modern Frameworks</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 60%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-card" data-skill="react">
-                    <div class="skill-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
+                    <p>App Router, server rendering, and deployments on AWS and Render for products people actually use.</p>
+                </article>
+                <article class="skill-card reveal" tabindex="0" data-skill="react">
+                    <svg class="icon" aria-hidden="true"><use href="#i-react"></use></svg>
                     <h3>React</h3>
-                    <p>Component-based architecture and state management</p>
-                    <div class="skill-level">
-                        <div class="progress-bar" style="width: 55%"></div>
-                    </div>
-                </div>
+                    <p>Component architecture, hooks, and interface state on responsive product screens.</p>
+                </article>
+                <article class="skill-card reveal" tabindex="0" data-skill="javascript">
+                    <svg class="icon" aria-hidden="true"><use href="#i-js"></use></svg>
+                    <h3>JavaScript</h3>
+                    <p>ES6+, DOM work, async flows, and the browser behavior behind the framework.</p>
+                </article>
+                <article class="skill-card reveal" tabindex="0" data-skill="html">
+                    <svg class="icon" aria-hidden="true"><use href="#i-html"></use></svg>
+                    <h3>HTML5</h3>
+                    <p>Semantic structure, accessible markup, and pages that stay readable to search and assistive tech.</p>
+                </article>
+                <article class="skill-card reveal" tabindex="0" data-skill="css">
+                    <svg class="icon" aria-hidden="true"><use href="#i-css"></use></svg>
+                    <h3>CSS3</h3>
+                    <p>Layout systems, motion, and responsive interfaces — this portfolio included.</p>
+                </article>
             </div>
 
-            <!-- Skill Details Overlay -->
-            <div class="skill-overlay">
-                <div class="skill-overlay-content">
-                    <button class="close-overlay"><i class="fas fa-times"></i></button>
+            <div class="skill-overlay" aria-hidden="true">
+                <div class="skill-overlay-content" role="dialog" aria-modal="true" aria-labelledby="skill-dialog-title">
+                    <button class="close-overlay" type="button" aria-label="Close skill details"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
                     <div class="skill-details">
                         <div class="skill-info">
-                            <h4>Proficiency Level: Intermediate</h4>
-                            <ul>
-                                <li>Semantic HTML5 elements</li>
-                                <li>Accessibility best practices</li>
-                                <li>SEO optimization</li>
-                                <li>Form validation</li>
-                            </ul>
+                            <h4 id="skill-dialog-title">Proficiency</h4>
+                            <ul></ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="projects-section">
-            <h2>Projects</h2>
-            <p class="section-intro">Live previews show each project's hero section directly from the deployed site.</p>
-            <div class="projects-container">
-                <div class="project-card project-card--featured">
-                    <div class="project-image">
-                        <div class="project-live-preview" aria-hidden="true">
-                            <iframe src="https://aks-edu-new.onrender.com/" title="AKS Edu live preview" loading="lazy" tabindex="-1"></iframe>
-                        </div>
-                        <img src="/images/projects/aks-edu.png" alt="AKS Edu — Online School for Mathematics, Science & Art" class="project-fallback">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://aks-edu-new.onrender.com/" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
-                            </div>
+        <section id="projects" class="panel panel-projects" data-label="PORTFOLIO">
+            <div class="viewer">
+                <p class="viewer-index" id="viewer-index">01</p>
+                <div class="viewer-screen">
+                    <span class="brackets" aria-hidden="true"></span>
+                    <div class="viewer-toolbar">
+                        <span>SELECTED PROJECTS</span>
+                        <div class="viewer-filters" role="tablist" aria-label="Filter projects">
+                            <button type="button" class="is-active" data-filter="all">ALL</button>
+                            <button type="button" data-filter="pro">SHIPPED</button>
+                            <button type="button" data-filter="school">STUDY</button>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <span class="project-badge">Professional Project</span>
-                        <h3>AKS Edu</h3>
-                        <p>Online secondary school platform for Mathematics, Science &amp; Art — featuring live classes, student/teacher/parent portals, admissions, and a full school experience built for the modern classroom.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Responsive Design</span>
-                        </div>
+                    <div class="viewer-stage" id="viewer-stage">
+                        <article class="viewer-card is-current" data-filter="pro">
+                            <img src="images/projects/aks-edu.jpg" alt="AKS Edu — online school for Mathematics, Science and Art" width="625" height="602" loading="lazy" decoding="async">
+                            <h3 class="card-title">AKS Edu</h3>
+                            <p class="card-role">Production platform</p>
+                            <p class="card-summary">Online secondary school platform for Mathematics, Science &amp; Art — live classes, student, teacher, and parent portals, admissions, and a full school experience built for the modern classroom.</p>
+                            <p class="card-tags">Next.js, TypeScript, React, Responsive Design</p>
+                            <a class="card-live" href="https://aks-edu-new.onrender.com/">View live</a>
+                        </article>
+                        <article class="viewer-card" data-filter="pro">
+                            <img src="images/projects/lovito.jpg" alt="Lovito Creations — soaps and home care" width="625" height="398" loading="lazy" decoding="async">
+                            <h3 class="card-title">Lovito Creations</h3>
+                            <p class="card-role">E-commerce product</p>
+                            <p class="card-summary">A marketplace for botanical soaps and home care — product collections, NGN pricing, cart checkout, and a shopping flow built for local customers.</p>
+                            <p class="card-tags">Next.js, TypeScript, React, E-commerce</p>
+                            <a class="card-live" href="https://lovito.onrender.com/">View live</a>
+                        </article>
+                        <article class="viewer-card" data-filter="pro">
+                            <img src="images/projects/doc-voice.jpg" alt="Doc-Voice — document reader" width="960" height="600" loading="lazy" decoding="async">
+                            <h3 class="card-title">Doc-Voice</h3>
+                            <p class="card-role">Document reader</p>
+                            <p class="card-summary">A studio for documents you want to hear. Open a page or a file, keep the headings and structure, and listen in a natural voice.</p>
+                            <p class="card-tags">JavaScript, HTML, CSS</p>
+                            <a class="card-live" href="https://docvoice-rosy.vercel.app/">View live</a>
+                        </article>
+                        <article class="viewer-card" data-filter="school">
+                            <img src="images/projects/e-commerce.jpg" alt="De Dash Dash e-commerce" width="880" height="426" loading="lazy" decoding="async">
+                            <h3 class="card-title">De Dash Dash</h3>
+                            <p class="card-role">School build · commerce</p>
+                            <p class="card-summary">A modern e-commerce platform for custom fashion pieces, with a responsive layout, shopping cart, and product showcase.</p>
+                            <p class="card-tags">HTML5, CSS3, JavaScript, Responsive Design</p>
+                            <a class="card-live" href="https://enohakpan.github.io/wdd131/Final-Project/index.html">View live</a>
+                            <a class="card-code" href="https://github.com/enohakpan/wdd131/tree/main/Final-Project">Source</a>
+                        </article>
+                        <article class="viewer-card" data-filter="school">
+                            <img src="images/projects/rafting.jpg" alt="White Water Rafting company site" width="880" height="383" loading="lazy" decoding="async">
+                            <h3 class="card-title">White Water Rafting</h3>
+                            <p class="card-role">School build · marketing site</p>
+                            <p class="card-summary">A site for a rafting company showcasing trips, company history, and booking information, with the layout planned from wireframes.</p>
+                            <p class="card-tags">HTML5, CSS3, Responsive Design, Wireframing</p>
+                            <a class="card-live" href="https://enohakpan.github.io/wdd130/wwr/">View live</a>
+                            <a class="card-code" href="https://github.com/enohakpan/wdd130/tree/main/wwr">Source</a>
+                        </article>
                     </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-live-preview" aria-hidden="true">
-                            <iframe src="https://lovito.onrender.com/" title="Lovito Creations live preview" loading="lazy" tabindex="-1"></iframe>
-                        </div>
-                        <img src="/images/projects/lovito.png" alt="Lovito Creations — Soaps & home care" class="project-fallback">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://lovito.onrender.com/" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-badge">Professional Project</span>
-                        <h3>Lovito Creations</h3>
-                        <p>An e-commerce marketplace for botanical soaps and home care — featuring product collections, NGN pricing, cart checkout, and a marketplace-style shopping experience built for local customers.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">E-commerce</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-live-preview" aria-hidden="true">
-                            <iframe src="https://enohakpan.github.io/wdd131/Final-Project/index.html" title="De Dash Dash E-commerce live preview" loading="lazy" tabindex="-1"></iframe>
-                        </div>
-                        <img src="/images/projects/e-commerce.png" alt="De Dash Dash E-commerce" class="project-fallback">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://enohakpan.github.io/wdd131/Final-Project/index.html" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
-                                <a href="https://github.com/enohakpan/wdd131/tree/main/Final-Project" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-badge project-badge--school">School Project</span>
-                        <h3>De Dash Dash E-commerce</h3>
-                        <p>A modern e-commerce platform for custom fashion pieces, featuring a responsive design, shopping cart functionality, and product showcase.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
-                        </div>
+                    <div class="viewer-controls">
+                        <button type="button" id="viewer-pause" aria-label="Pause projects" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-pause"></use></svg></button>
+                        <span id="viewer-time">00:00 / 00:08</span>
+                        <span class="viewer-progress" aria-hidden="true"><span id="viewer-progress-bar"></span></span>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-live-preview" aria-hidden="true">
-                            <iframe src="https://enohakpan.github.io/wdd130/wwr/" title="White Water Rafting live preview" loading="lazy" tabindex="-1"></iframe>
-                        </div>
-                        <img src="/images/projects/rafting.png" alt="White Water Rafting" class="project-fallback">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://enohakpan.github.io/wdd130/wwr/" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
-                                <a href="https://github.com/enohakpan/wdd130/tree/main/wwr" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
-                            </div>
-                        </div>
+                <button class="viewer-nav viewer-prev" type="button" aria-label="Previous project"><svg class="icon" aria-hidden="true"><use href="#i-left"></use></svg></button>
+                <button class="viewer-nav viewer-next" type="button" aria-label="Next project"><svg class="icon" aria-hidden="true"><use href="#i-right"></use></svg></button>
+                <div class="viewer-caption" aria-live="polite">
+                    <h2 id="viewer-title">AKS Edu</h2>
+                    <p id="viewer-role">PRODUCTION PLATFORM</p>
+                    <p id="viewer-summary">Online secondary school platform for Mathematics, Science &amp; Art — live classes, student, teacher, and parent portals, admissions, and a full school experience built for the modern classroom.</p>
+                    <div class="chip-row" id="viewer-tags">
+                        <span>Next.js</span><span>TypeScript</span><span>React</span><span>Responsive Design</span>
                     </div>
-                    <div class="project-content">
-                        <span class="project-badge project-badge--school">School Project</span>
-                        <h3>White Water Rafting</h3>
-                        <p>A dynamic website for a rafting company showcasing adventure trips, company history, and booking information with a focus on user experience and responsive design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">Wireframing</span>
-                        </div>
+                    <div class="viewer-actions">
+                        <a id="viewer-live" href="https://aks-edu-new.onrender.com/" target="_blank" rel="noopener noreferrer">View live</a>
+                        <a id="viewer-code" href="#" target="_blank" rel="noopener noreferrer" hidden>Source</a>
                     </div>
+                    <p class="viewer-count"><span id="viewer-pos">01</span> / <span id="viewer-total">05</span></p>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="education-section">
-            <h2>Education &amp; Certification</h2>
-            <div class="education-container">
-                <article class="education-card">
-                    <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="education-content">
-                        <h3>B.Sc. Software Development</h3>
-                        <p class="education-institution">BYU Pathway</p>
-                        <p class="education-date">Expected 2027</p>
-                        <p>Build responsive and scalable web applications using core web development technologies (HTML, CSS, JavaScript).</p>
-                    </div>
+        <section id="education" class="panel panel-study" data-label="STUDY">
+            <div class="panel-intro">
+                <p class="kicker">05 / STUDY</p>
+                <h2>EDUCATION</h2>
+                <p class="intro">Formal training in software development, plus the certificate behind the programming foundation.</p>
+            </div>
+            <div class="study-grid">
+                <article class="glass reveal">
+                    <svg class="icon" aria-hidden="true"><use href="#i-study"></use></svg>
+                    <h3>B.Sc. Software Development</h3>
+                    <p class="study-where">BYU Pathway</p>
+                    <p class="study-when">Expected 2027</p>
+                    <p>Build responsive and scalable web applications using core web development technologies (HTML, CSS, JavaScript).</p>
                 </article>
-
-                <article class="education-card">
-                    <div class="education-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="education-content">
-                        <h3>Pathway Connect Certificate</h3>
-                        <p class="education-institution">BYU Pathway Worldwide</p>
-                        <p class="education-date">2024</p>
-                        <p>Time management, budgeting, study habits, oral and written communication, decision making, quantitative reasoning, and online collaboration.</p>
-                    </div>
+                <article class="glass reveal">
+                    <svg class="icon" aria-hidden="true"><use href="#i-cert"></use></svg>
+                    <h3>Pathway Connect Certificate</h3>
+                    <p class="study-where">BYU Pathway Worldwide</p>
+                    <p class="study-when">2024</p>
+                    <p>Time management, budgeting, study habits, oral and written communication, decision making, quantitative reasoning, and online collaboration.</p>
                 </article>
-
-                <article class="education-card">
-                    <div class="education-icon"><i class="fas fa-award"></i></div>
-                    <div class="education-content">
-                        <h3>Web and Computer Programming</h3>
-                        <p class="education-institution">Certification</p>
-                        <p>Foundational programming and web development skills.</p>
-                        <button type="button" class="education-link cert-viewer-trigger" data-cert="/images/main_cert.pdf" data-title="Web and Computer Programming">
-                            <i class="fas fa-award"></i> View Certificate
-                        </button>
-                    </div>
+                <article class="glass reveal">
+                    <svg class="icon" aria-hidden="true"><use href="#i-award"></use></svg>
+                    <h3>Web and Computer Programming</h3>
+                    <p class="study-where">Certification</p>
+                    <p class="study-when">Foundation</p>
+                    <p>Foundational programming and web development skills.</p>
+                    <button type="button" class="hud-link cert-viewer-trigger" data-cert="images/main_cert.pdf" data-title="Web and Computer Programming">
+                        View certificate
+                    </button>
                 </article>
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <h2>Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dashdash59600@gmail.com&su=Portfolio Contact" class="contact-card" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <span>dashdash59600@gmail.com</span>
-                        <p class="contact-description">Feel free to reach out for job opportunities or collaborations</p>
-                    </a>
-                    <a href="https://github.com/enohakpan" class="contact-card" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i>
-                        <h3>GitHub</h3>
-                        <span>github.com/enohakpan</span>
-                        <p class="contact-description">Check out my open-source contributions and projects</p>
-                    </a>
-                    <a href="https://www.linkedin.com/in/enoh-uwem-akpan-20125932a" class="contact-card" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-linkedin"></i>
-                        <h3>LinkedIn</h3>
-                        <span>linkedin.com/in/enoh-uwem-akpan</span>
-                        <p class="contact-description">Connect with me for professional networking</p>
-                    </a>
-                    <a href="https://wa.me/+2349027554682" class="contact-card" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-whatsapp"></i>
-                        <h3>WhatsApp</h3>
-                        <span>+2349027554682</span>
-                        <p class="contact-description">Message me directly for quick responses</p>
-                    </a>
+        <section id="contact" class="panel panel-contact" data-label="CONTACT">
+            <div class="contact-hero">
+                <img src="images/profile/avatar.jpg" alt="Enoh Uwem Akpan" class="contact-portrait" width="192" height="203" loading="lazy" decoding="async">
+                <div>
+                    <p class="kicker">06 / CONTACT</p>
+                    <h2>OPEN<br>CHANNEL</h2>
+                    <p class="intro">For roles, collaborations, and product work. The fastest way in is email — the rest of the channels stay open.</p>
                 </div>
             </div>
+            <div class="channel-grid">
+                <a class="channel reveal" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=dashdash59600@gmail.com" data-email="dashdash59600@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    <h3>Email</h3>
+                    <span>dashdash59600@gmail.com</span>
+                    <p>Job opportunities and collaborations.</p>
+                </a>
+                <a class="channel reveal" href="https://github.com/enohakpan" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    <h3>GitHub</h3>
+                    <span>github.com/enohakpan</span>
+                    <p>Source, experiments, and shipped coursework.</p>
+                </a>
+                <a class="channel reveal" href="https://www.linkedin.com/in/enoh-uwem-akpan-20125932a" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    <h3>LinkedIn</h3>
+                    <span>enoh-uwem-akpan</span>
+                    <p>Professional history and a direct connection.</p>
+                </a>
+                <a class="channel reveal" href="https://wa.me/+2349027554682" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg>
+                    <h3>WhatsApp</h3>
+                    <span>+234 902 755 4682</span>
+                    <p>A direct line when the note should be short.</p>
+                </a>
+            </div>
+            <footer class="colophon">
+                <div class="social-links">
+                    <a href="https://github.com/enohakpan" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/enoh-uwem-akpan-20125932a" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg></a>
+                    <a href="https://wa.me/+2349027554682" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg></a>
+                </div>
+                <p>&copy; 2026 Enoh Uwem Akpan. All rights reserved.</p>
+            </footer>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://github.com/enohakpan" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/enoh-uwem-akpan-20125932a" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://wa.me/+2349027554682" class="social-link"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>&copy; 2026 Enoh Uwem Akpan. All rights reserved.</p>
-        </div>
-    </footer>
 
     <div class="cert-viewer" id="cert-viewer" aria-hidden="true">
         <div class="cert-viewer__backdrop" data-cert-close></div>
         <div class="cert-viewer__stage" role="dialog" aria-modal="true" aria-labelledby="cert-viewer-title">
-            <div class="cert-viewer__orb cert-viewer__orb--one"></div>
-            <div class="cert-viewer__orb cert-viewer__orb--two"></div>
-
             <header class="cert-viewer__header">
-                <div class="cert-viewer__badge">
-                    <i class="fas fa-certificate"></i>
-                    <div>
-                        <p class="cert-viewer__eyebrow">Verified Credential</p>
-                        <h3 id="cert-viewer-title">Web and Computer Programming</h3>
-                    </div>
+                <div>
+                    <p class="kicker">Verified credential</p>
+                    <h3 id="cert-viewer-title">Web and Computer Programming</h3>
                 </div>
                 <div class="cert-viewer__toolbar">
-                    <button type="button" class="cert-viewer__tool" id="cert-zoom-out" aria-label="Zoom out"><i class="fas fa-search-minus"></i></button>
+                    <button type="button" class="cert-viewer__tool" id="cert-zoom-out" aria-label="Zoom out"><svg class="icon" aria-hidden="true"><use href="#i-minus"></use></svg></button>
                     <span class="cert-viewer__zoom-label" id="cert-zoom-label">100%</span>
-                    <button type="button" class="cert-viewer__tool" id="cert-zoom-in" aria-label="Zoom in"><i class="fas fa-search-plus"></i></button>
-                    <a class="cert-viewer__tool cert-viewer__download" id="cert-download" href="/images/main_cert.pdf" download="Enoh-Uwem-Akpan-Web-and-Computer-Programming.pdf" aria-label="Download certificate">
-                        <i class="fas fa-download"></i>
-                    </a>
-                    <button type="button" class="cert-viewer__tool cert-viewer__close" data-cert-close aria-label="Close certificate viewer"><i class="fas fa-times"></i></button>
+                    <button type="button" class="cert-viewer__tool" id="cert-zoom-in" aria-label="Zoom in"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg></button>
+                    <a class="cert-viewer__tool" id="cert-download" href="images/main_cert.pdf" download="Enoh-Uwem-Akpan-Web-and-Computer-Programming.pdf" aria-label="Download certificate"><svg class="icon" aria-hidden="true"><use href="#i-down"></use></svg></a>
+                    <button type="button" class="cert-viewer__tool" data-cert-close aria-label="Close certificate viewer"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
                 </div>
             </header>
-
-            <div class="cert-viewer__frame-wrap">
-                <div class="cert-viewer__frame" id="cert-frame">
-                    <div class="cert-viewer__border"></div>
-                    <div class="cert-viewer__shine"></div>
-                    <div class="cert-viewer__viewport">
-                        <iframe id="cert-iframe" class="cert-viewer__doc" title="Certificate PDF" loading="lazy"></iframe>
-                    </div>
+            <div class="cert-viewer__frame" id="cert-frame">
+                <span class="brackets" aria-hidden="true"></span>
+                <div class="cert-viewer__viewport">
+                    <iframe id="cert-iframe" title="Certificate PDF" loading="lazy"></iframe>
                 </div>
             </div>
-
             <p class="cert-viewer__hint">Drag to pan when zoomed · Esc to close</p>
         </div>
     </div>
 
+    <script type="module" src="scene.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
